@@ -1,3 +1,7 @@
+package kmeans;
+
+import common.DataPoint;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,18 +9,18 @@ import java.util.List;
 public class GapStatistics {
 	@Override
 	public String toString() {
-		return "GapStatistics [logWkbs=" + logWkbs + "\n logWks=" + logWks + "\n ks=" + ks
+		return "kmeans.GapStatistics [logWkbs=" + logWkbs + "\n logWks=" + logWks + "\n ks=" + ks
 				+ "\n sk=" + sk + "\n gap=" + gap + "\n diff=" + diff + "]";
 	}
 
 	private List<Double> logWkbs;
 	private List<Double> logWks;
-	private Tuple ks;
+	private DataPoint ks;
 	private List<Double> sk;
 	private ArrayList<Double> gap;
 	private List<Double> diff;
 
-	public GapStatistics(Tuple ks, List<Double> logWks, List<Double> logWkbs,
+	public GapStatistics(DataPoint ks, List<Double> logWks, List<Double> logWkbs,
 			List<Double> sk) {
 		this.ks = ks;
 		this.logWks = logWks;
@@ -43,7 +47,7 @@ public class GapStatistics {
 		return logWks;
 	}
 
-	public Tuple getKs() {
+	public DataPoint getKs() {
 		return ks;
 	}
 

@@ -1,17 +1,19 @@
+package common;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Tuple {
+public class DataPoint {
 	@Override
 	public String toString() {
-		return "Tuple [first=" + first + ", second=" + second + "]";
+		return "common.DataPoint [first=" + first + ", second=" + second + "]";
 	}
 
 	private double first;
 	private double second;
 	
-	public Tuple(double first, double second) {
+	public DataPoint(double first, double second) {
 		this.first = first;
 		this.second = second;
 	}
@@ -22,8 +24,8 @@ public class Tuple {
 	public double getSecond(){
 		return second;
 	}
-	public Tuple sub(Tuple other){
-		return new Tuple(first - other.first, second - other.second);
+	public DataPoint sub(DataPoint other){
+		return new DataPoint(first - other.first, second - other.second);
 	}
 	public double abs(){
 		return Math.sqrt(squaredValues());
@@ -53,7 +55,7 @@ public class Tuple {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Tuple other = (Tuple) obj;
+		DataPoint other = (DataPoint) obj;
 		if (Double.doubleToLongBits(first) != Double.doubleToLongBits(other.first))
 			return false;
 		if (Double.doubleToLongBits(second) != Double.doubleToLongBits(other.second))
@@ -61,10 +63,10 @@ public class Tuple {
 		return true;
 	}
 
-	public List<Tuple> sub(LinkedList<Tuple> c) {
-		List<Tuple> result = new ArrayList<>();
-		for(Tuple t : c){
-			result.add(new Tuple(first - t.getFirst(), second - t.getSecond()));
+	public List<DataPoint> sub(LinkedList<DataPoint> c) {
+		List<DataPoint> result = new ArrayList<>();
+		for(DataPoint t : c){
+			result.add(new DataPoint(first - t.getFirst(), second - t.getSecond()));
 		}
 		return result;
 	}

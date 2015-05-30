@@ -1,29 +1,33 @@
+package kmeans;
+
+import common.DataPoint;
+
 import java.util.*;
 
 /**
  * Created by Johan on 2015-05-30.
  */
 public class Util {
-    public static void printList(Tuple[] tuples) {
-        for(Tuple t : tuples){
+    public static void printList(DataPoint[] dataPoints) {
+        for(DataPoint t : dataPoints){
             System.out.print (t + ", ");
         }
     }
 
-    public static Tuple meanByCol(List<Tuple> tuples) {
+    public static DataPoint meanByCol(List<DataPoint> dataPoints) {
         double xMean = 0;
         double yMean = 0;
-        for (Tuple tuple : tuples) {
-            xMean += tuple.getFirst();
-            yMean += tuple.getSecond();
+        for (DataPoint dataPoint : dataPoints) {
+            xMean += dataPoint.getFirst();
+            yMean += dataPoint.getSecond();
         }
-        xMean /= tuples.size();
-        yMean /= tuples.size();
-        return new Tuple(xMean, yMean);
+        xMean /= dataPoints.size();
+        yMean /= dataPoints.size();
+        return new DataPoint(xMean, yMean);
     }
 
-    public static List<Tuple> sample(List<Tuple> list, int K) {
-        List<Tuple> sampled = new LinkedList<Tuple>();
+    public static List<DataPoint> sample(List<DataPoint> list, int K) {
+        List<DataPoint> sampled = new LinkedList<DataPoint>();
         Random random = new Random();
         Set<Integer> taken = new HashSet<>();
         int index = random.nextInt(list.size());
@@ -37,17 +41,17 @@ public class Util {
         return sampled;
     }
 
-    public static double norm(List<Tuple> tuples) {
+    public static double norm(List<DataPoint> dataPoints) {
         double sum = 0;
-        for (Tuple tuple : tuples) {
-            sum += tuple.squaredValues();
+        for (DataPoint dataPoint : dataPoints) {
+            sum += dataPoint.squaredValues();
         }
         return Math.sqrt(sum);
     }
 
-    public static double getMinFirst(List<Tuple> tuples) {
-        double min = tuples.get(0).getFirst();
-        for (Tuple tup : tuples) {
+    public static double getMinFirst(List<DataPoint> dataPoints) {
+        double min = dataPoints.get(0).getFirst();
+        for (DataPoint tup : dataPoints) {
             if (tup.getFirst() < min) {
                 min = tup.getFirst();
             }
@@ -55,9 +59,9 @@ public class Util {
         return min;
     }
 
-    public static double getMaxFirst(List<Tuple> tuples) {
-        double min = tuples.get(0).getFirst();
-        for (Tuple tup : tuples) {
+    public static double getMaxFirst(List<DataPoint> dataPoints) {
+        double min = dataPoints.get(0).getFirst();
+        for (DataPoint tup : dataPoints) {
             if (tup.getFirst() > min) {
                 min = tup.getFirst();
             }
@@ -65,9 +69,9 @@ public class Util {
         return min;
     }
 
-    public static double getMinSecond(List<Tuple> tuples) {
-        double min = tuples.get(0).getSecond();
-        for (Tuple tup : tuples) {
+    public static double getMinSecond(List<DataPoint> dataPoints) {
+        double min = dataPoints.get(0).getSecond();
+        for (DataPoint tup : dataPoints) {
             if (tup.getSecond() < min) {
                 min = tup.getSecond();
             }
@@ -75,9 +79,9 @@ public class Util {
         return min;
     }
 
-    public static double getMaxSecond(List<Tuple> tuples) {
-        double min = tuples.get(0).getSecond();
-        for (Tuple tup : tuples) {
+    public static double getMaxSecond(List<DataPoint> dataPoints) {
+        double min = dataPoints.get(0).getSecond();
+        for (DataPoint tup : dataPoints) {
             if (tup.getSecond() > min) {
                 min = tup.getSecond();
             }
@@ -85,16 +89,16 @@ public class Util {
         return min;
     }
 
-    public static Tuple getMinByVal(Tuple[] tuples) {
-        double min = tuples[0].getSecond();
-        Tuple minTuple = tuples[0];
-        for (Tuple tup : tuples) {
+    public static DataPoint getMinByVal(DataPoint[] dataPoints) {
+        double min = dataPoints[0].getSecond();
+        DataPoint minDataPoint = dataPoints[0];
+        for (DataPoint tup : dataPoints) {
             if (tup.getSecond() < min) {
-                minTuple = tup;
-                min = minTuple.getSecond();
+                minDataPoint = tup;
+                min = minDataPoint.getSecond();
             }
         }
-        return minTuple;
+        return minDataPoint;
     }
 
     public static List<Double> mul(List<Double> list, double d) {
